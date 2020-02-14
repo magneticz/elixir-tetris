@@ -1,7 +1,7 @@
 defmodule Tetris.Brick do
   defstruct name: :i, location: {40, 0}, rotation: 0, reflection: false
 
-  def new(), do: __struct__()
+  def new(attributes \\ []), do: __struct__(attributes)
 
   def new_random() do
     %__MODULE__{
@@ -54,4 +54,49 @@ defmodule Tetris.Brick do
 
   def rotate(270), do: 0
   def rotate(degrees), do: degrees + 90
+
+  def shape(%{name: :l}) do
+    [
+      {2, 1},
+      {2, 2},
+      {2, 3},
+      {3, 3}
+    ]
+  end
+
+  def shape(%{name: :o}) do
+    [
+      {2, 2},
+      {3, 2},
+      {2, 3},
+      {3, 3}
+    ]
+  end
+
+  def shape(%{name: :i}) do
+    [
+      {2, 1},
+      {2, 2},
+      {2, 3},
+      {2, 4}
+    ]
+  end
+
+  def shape(%{name: :z}) do
+    [
+      {2, 2},
+      {2, 3},
+      {3, 3},
+      {3, 4}
+    ]
+  end
+
+  def shape(%{name: :t}) do
+    [
+      {2, 1},
+      {2, 2},
+      {3, 2},
+      {2, 3}
+    ]
+  end
 end
