@@ -1,6 +1,6 @@
 defmodule Tetris.Brick do
   defstruct name: :i, location: {40, 0}, rotation: 0, reflection: false
-
+  alias Tetris.Points
   def new(attributes \\ []), do: __struct__(attributes)
 
   def new_random() do
@@ -84,10 +84,10 @@ defmodule Tetris.Brick do
 
   def shape(%{name: :z}) do
     [
+      {2, 1},
       {2, 2},
-      {2, 3},
-      {3, 3},
-      {3, 4}
+      {3, 2},
+      {3, 3}
     ]
   end
 
@@ -98,5 +98,13 @@ defmodule Tetris.Brick do
       {3, 2},
       {2, 3}
     ]
+  end
+
+  def print(brick) do
+    brick
+    |> shape
+    |> Points.print()
+
+    brick
   end
 end
